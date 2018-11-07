@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>入库测试</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="entry.js"></script>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>食品名称</td>
+        <td>规格</td>
+        <td>单位</td>
+        <td>单价</td>
+        <td>生产日期</td>
+        <td>保质期</td>
+        <td>入库数量</td>
+        <td>库房及货架号</td>
+        <td>录入人</td>
+        <td>入库单编号</td>
+        <td>入库详单编码</td><!-- 实现入库单对入库详单的一对多关系-->
+        <td>是否录入结束</td>
+    </tr>
+    </thead>
+    <tbody id="EntryFood">
+<tr>
+    <td><input id="Fname"></td>
+    <td><input id="Fstandard"></td>
+    <td><input id="Funit"></td>
+    <td><input id="Fprice"></td>
+    <td><input id="Fproducedate"></td>
+    <td><input id="Fguaranteeperid"></td>
+    <td><input id="Fnumber"></td>
+    <td><input id="Fposencode"></td>
+    <td><input id="Fentryman"></td>
+    <td><input id="Fentyrdate"></td>
+    <td><input id="Fgedencode"></td>
+    <td><input id="Finish"></td>
+</tr>
+    </tbody>
+</table>
+<h4>示例：伊利 箱 瓶 60 2017年12 12个月 60 001,008,1 蔡徐坤 2018年第001号 20181024002 0</h4>
+<input type="button" value="入库" onclick="entryFoodList()"/>
+</body>
+</html>

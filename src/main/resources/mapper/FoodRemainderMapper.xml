@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.warems.warehouse.dao.FoodRemainderDao" >
+    <resultMap id="BaseMap" type="com.warems.warehouse.entity.FoodRemainder" >
+        <id column="f_ID" property="fID" />
+        <result column="f_name" property="name"/>
+        <result column="f_standard" property="standard"/>
+        <result column="f_unit" property="unit"/>
+        <result column="ged_number" property="ennumber"/>
+        <result column="f_number" property="renumber"/>
+        <result column="ged_ID" property="detailID"/>
+        <result column="f_price" property="price"/>
+        <result column="f_producedate" property="producedate"/>
+        <result column="f_guaranteeperiod" property="guaranteeperiod"/>
+        <result column="posencode" property="posencode"/>
+        <result column="ge_ID" property="enID"/>
+        <result column="ge_entrydate" property="entrydate"/>
+        <result column="ge_entryman" property="entryman"/>
+        <!--前面是数据库，后面是java-->
+    </resultMap>
+    <sql id="BaseColumn1">
+        f_ID,
+        f_name,
+        f_standard,
+        f_unit,
+        ged_number,
+        f_number,
+        ged_ID,
+        f_price,
+        f_producedate,
+        f_guaranteeperiod,
+        posencode,
+        ge_ID,
+        ge_entrydate,
+        ge_entryman
+    </sql>
+    <sql id="BaseColumn2">
+        f_name,
+        f_standard,
+        f_unit,
+        ged_number,
+        f_number,
+        ged_ID,
+        f_price,
+        f_producedate,
+        f_guaranteeperiod,
+        posencode,
+        ge_ID,
+        ge_entrydate,
+        ge_entryman
+    </sql>
+    <select id="getOne" resultMap="BaseMap" parameterType="com.warems.warehouse.entity.FoodRemainder">
+    SELECT
+    <include refid="BaseColumn1"/>
+    FROM
+    view_food_remainder2
+    <where>
+        <if test="fID != null">
+            AND f_ID = #{fID}
+        </if>
+        <if test="name != null and name!=''">
+            AND f_name = #{name}
+        </if>
+
+    </where>
+    </select>
+    <select id="getAll" resultMap="BaseMap">
+        SELECT
+        <include refid="BaseColumn1"/>
+        FROM
+        view_food_remainder2
+    </select>
+
+    <update id="update" parameterType="com.warems.warehouse.entity.FoodRemainder">
+        UPDATE
+        view_food_remainder2
+        SET
+        f_number = #{renumber}
+        where
+        f_ID = #{fID}
+    </update>
+
+
+
+</mapper>
